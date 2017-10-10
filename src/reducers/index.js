@@ -1,8 +1,9 @@
 import currentUser from './currentUser'
-import classes from './classes'
+import batches from './batches'
+import students from './students'
 
 export default {
-  classes,
+  batches,
   currentUser,
   students,
 }

@@ -1,4 +1,4 @@
-import { FETCHED_CLASSES } from '../actions/classes/fetch'
+import { FETCHED_BATCHES } from '../actions/batches/fetch'
 // import {
 //   GAME_CREATED,
 //   GAME_UPDATED,
@@ -8,7 +8,7 @@ import { FETCHED_CLASSES } from '../actions/classes/fetch'
 export default (state = [], { type, payload } = {}) => {
   switch (type) {
 
-    case FETCHED_CLASSES :
+    case FETCHED_BATCHES :
       return [ ...payload ]
 
     // case GAME_CREATED :

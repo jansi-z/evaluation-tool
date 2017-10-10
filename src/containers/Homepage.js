@@ -4,22 +4,22 @@ import { push } from 'react-router-redux'
 import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
-import fetchClasses from '../actions/classes/fetch'
+import fetchBatches from '../actions/batches/fetch'
 
 class Homepage extends PureComponent {
   componentWillMount() {
-    const { fetchClasses } = this.props
-    fetchClasses()
+    const { fetchBatches } = this.props
+    fetchBatches()
   }
 
-  goToClass(classId) {
+  goToBatch(batchId) {
     const { push } = this.props
     return () => {
-      push(`/classes/${classId}`)
+      push(`/batches/${batchId}`)
     }
   }
 
-  renderClass(batch, index) {
+  renderBatch(batch, index) {
     const startDate = batch.startDate.toString()
     const endDate = batch.endDate.toString()
     const dates = startDate.substr(0, 10)+" to "+endDate.substr(0, 10)
@@ -27,7 +27,7 @@ class Homepage extends PureComponent {
     return (
       <MenuItem
         key={index}
-        onClick={this.goToClass(batch._id).bind(this)}
+        onClick={this.goToBatch(batch._id).bind(this)}
         primaryText={batch.name}
         secondaryText={dates} />
     )
@@ -37,9 +37,9 @@ class Homepage extends PureComponent {
     return (
       <div className="Homepage">
         <h1 id="logo">Welcome to student evaluation assignment!</h1>
-        <Paper className="classList">
+        <Paper className="batchList">
           <Menu>
-            { this.props.classes.map(this.renderClass.bind(this))}
+            { this.props.batches.map(this.renderBatch.bind(this))}
           </Menu>
         </Paper>
       </div>
@@ -47,6 +47,6 @@ class Homepage extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ currentUser, classes }) => ({ currentUser, classes })
+const mapStateToProps = ({ currentUser, batches }) => ({ currentUser, batches })
 
-export default connect(mapStateToProps, { push, fetchClasses })(Homepage)
+export default connect(mapStateToProps, { push, fetchBatches })(Homepage)

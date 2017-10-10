@@ -1,13 +1,13 @@
 import API from '../../api'
 
-export const FETCHED_CLASSES = 'FETCHED_CLASSES'
+export const FETCHED_BATCHES = 'FETCHED_BATCHES'
 
 const api = new API()
 
 export default () => {
   return (dispatch) => {
 
-    const backend = api.service('classes')
+    const backend = api.service('batches')
 
     api.authenticate()
       .then(() => {
@@ -21,7 +21,7 @@ export default () => {
           .then((result) => {
             console.log(result)
             dispatch({
-              type: FETCHED_CLASSES,
+              type: FETCHED_BATCHES,
               payload: result.data
             })
           })
@@ -33,7 +33,7 @@ export default () => {
         backend.find()
           .then((result) => {
             dispatch({
-              type: FETCHED_CLASSES,
+              type: FETCHED_BATCHES,
               payload: result.data
             })
           })
