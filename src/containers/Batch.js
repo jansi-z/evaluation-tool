@@ -4,13 +4,14 @@ import { push } from 'react-router-redux'
 import fetchStudents from '../actions/students/fetch'
 import getCurrentBatch from '../actions/batches/get'
 import Paper from 'material-ui/Paper'
+import subscribeToBatches from '../actions/batches/subscribe'
 
 class Batch extends PureComponent {
   componentWillMount(){
-    const { fetchStudents, getCurrentBatch } = this.props
+    const { fetchStudents, getCurrentBatch, subscribed, batches } = this.props
     const batchId = this.props.match.params.batchId
-    debugger
-    getCurrentBatch(batchId)
+    this.props.getCurrentBatch(batchId)
+    if(!subscribed) subscribeToBatches()
   }
 
   renderStudent(){
@@ -18,7 +19,7 @@ class Batch extends PureComponent {
   }
 
   render() {
-    debugger
+    if (this.props.currentBatch === null) return null
     return (
       <div className="batch">
         <h1>{this.props.currentBatch.name}</h1>
@@ -30,6 +31,16 @@ class Batch extends PureComponent {
 }
 
 
-const mapStateToProps = ({ currentUser, batches, students, currentBatch }) => ({ currentUser, batches, students, currentBatch })
+const mapStateToProps = ({
+    currentUser,
+    batches,
+    students,
+    currentBatch,
+    subscriptions }) => ({
+      currentUser,
+      batches,
+      students,
+      currentBatch,
+      subscribed: subscriptions.includes('batches') })
 
-export default connect(mapStateToProps, { push, fetchStudents, getCurrentBatch })(Batch)
+export default connect(mapStateToProps, { push, fetchStudents, getCurrentBatch, subscribeToBatches })(Batch)

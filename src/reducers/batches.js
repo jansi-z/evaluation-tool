@@ -1,9 +1,9 @@
 import { FETCHED_BATCHES } from '../actions/batches/fetch'
-// import {
-//   GAME_CREATED,
-//   GAME_UPDATED,
-//   GAME_REMOVED
-// } from '../actions/games/subscribe'
+import {
+  BATCH_CREATED,
+  BATCH_UPDATED,
+  BATCH_REMOVED
+} from '../actions/batches/subscribe'
 
 export default (state = [], { type, payload } = {}) => {
   switch (type) {
@@ -11,20 +11,20 @@ export default (state = [], { type, payload } = {}) => {
     case FETCHED_BATCHES :
       return [ ...payload ]
 
-    // case GAME_CREATED :
-    //   const newGame = { ...payload }
-    //   return [newGame].concat(state)
-    //
-    // case GAME_UPDATED :
-    //   return state.map((game) => {
-    //     if (game._id === payload._id) {
-    //       return { ...payload }
-    //     }
-    //     return game
-    //   })
-    //
-    // case GAME_REMOVED :
-    //     return state.filter((game) => (game._id !== payload._id))
+    case BATCH_CREATED :
+      const newGame = { ...payload }
+      return [newGame].concat(state)
+
+    case BATCH_UPDATED :
+      return state.map((batch) => {
+        if (batch._id === payload._id) {
+          return { ...payload }
+        }
+        return batch
+      })
+
+    case BATCH_REMOVED :
+        return state.filter((batch) => (batch._id !== payload._id))
 
     default :
       return state

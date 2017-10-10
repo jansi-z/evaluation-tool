@@ -6,6 +6,7 @@ const api = new API()
 
 export default (batchId) => {
   return (dispatch) => {
+
     const backend = api.service('batches')
 
     api.authenticate()
