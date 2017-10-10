@@ -5,11 +5,13 @@ import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import fetchBatches from '../actions/batches/fetch'
+import subscribeToBatchesService from '../actions/batches/subscribe'
 
 class Homepage extends PureComponent {
   componentWillMount() {
-    const { fetchBatches } = this.props
+    const { fetchBatches, subscribeToBatchesService, subscribed } = this.props
     fetchBatches()
+    if (!subscribed) subscribeToBatchesService()
   }
 
   goToBatch(batchId) {
@@ -47,6 +49,6 @@ class Homepage extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ currentUser, batches }) => ({ currentUser, batches })
+const mapStateToProps = ({ currentUser, batches, subscriptions }) => ({ currentUser, batches, subscribed: subscriptions.includes('batches') })
 
-export default connect(mapStateToProps, { push, fetchBatches })(Homepage)
+export default connect(mapStateToProps, { push, fetchBatches, subscribeToBatchesService })(Homepage)
