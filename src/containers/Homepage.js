@@ -20,12 +20,16 @@ class Homepage extends PureComponent {
   }
 
   renderClass(batch, index) {
+    const startDate = batch.startDate.toString()
+    const endDate = batch.endDate.toString()
+    const dates = startDate.substr(0, 10)+" to "+endDate.substr(0, 10)
+
     return (
       <MenuItem
         key={index}
         onClick={this.goToClass(batch._id).bind(this)}
         primaryText={batch.name}
-        secondaryText={batch.startDate} />
+        secondaryText={dates} />
     )
   }
 
