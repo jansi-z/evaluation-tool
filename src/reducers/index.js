@@ -1,1 +1,5 @@
-export default {} // empty for now!
+import currentUser from './currentUser'
+
+export default {
+  currentUser,
+}
