@@ -14,13 +14,14 @@ export default () => {
         backend.find({
           query: {
             $sort: {
-              startDate: -1,
+              startDate: 1,
             },
           }
         })
           .then((result) => {
+            console.log(result)
             dispatch({
-              type: FETCHED_GAMES,
+              type: FETCHED_CLASSES,
               payload: result.data
             })
           })
@@ -32,7 +33,7 @@ export default () => {
         backend.find()
           .then((result) => {
             dispatch({
-              type: FETCHED_GAMES,
+              type: FETCHED_CLASSES,
               payload: result.data
             })
           })
