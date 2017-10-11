@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
+import './StudentItem.css'
 
 class StudentItem extends PureComponent {
   render () {
@@ -10,7 +11,7 @@ class StudentItem extends PureComponent {
       <article className="studentItem">
         <header>
           <div
-            className="image"
+            className="photo"
             style={{ backgroundImage: `url(${photo})`}} />
           <h1>
             <a

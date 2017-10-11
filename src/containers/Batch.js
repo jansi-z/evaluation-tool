@@ -6,6 +6,7 @@ import getCurrentBatch from '../actions/batches/get'
 import Paper from 'material-ui/Paper'
 import subscribeToBatches from '../actions/batches/subscribe'
 import StudentItem from '../components/batches/StudentItem'
+import './Batch.css'
 
 class Batch extends PureComponent {
   componentWillMount(){
