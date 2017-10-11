@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import getCurrentStudent from '../actions/students/get'
 
 class Student extends PureComponent {
   componentWillMount() {
