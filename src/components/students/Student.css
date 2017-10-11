@@ -1,0 +1,12 @@
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  header .studentInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; }
+    header .studentInfo ul {
+      text-align: left; }
+  header img {
+    max-height: 200px; }

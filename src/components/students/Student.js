@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import getCurrentStudent from '../../actions/students/get'
 import fetchStudents from '../../actions/students/fetch'
+import './Student.css'
 
 class Student extends PureComponent {
   componentWillMount() {
