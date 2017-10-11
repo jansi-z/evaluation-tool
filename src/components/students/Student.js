@@ -1,15 +1,17 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import getCurrentStudent from '../actions/students/get'
+import getCurrentStudent from '../../actions/students/get'
+import fetchStudents from '../../actions/students/fetch'
 
 class Student extends PureComponent {
   componentWillMount() {
     const studentId = this.props.match.params.studentId
-
-    getCurrentStudent(studentId)
+    this.props.getCurrentStudent(studentId)
   }
 
   render() {
+    const currentStudent = this.props.currentStudent
+
     if (!currentStudent) return null
 
     return (
@@ -17,7 +19,7 @@ class Student extends PureComponent {
         <header>
           <h1>{ this.props.currentStudent.name }</h1>
           <div className="studentInfo">
-            <img src={ this.props.currentStudent.photo }>
+            <img src={ this.props.currentStudent.photo } />
             <ul>
               <li>Name: { this.props.currentStudent.name }</li>
               <li>Batch: { this.props.currentStudent.batch.name }</li>
