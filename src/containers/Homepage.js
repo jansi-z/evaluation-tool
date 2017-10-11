@@ -10,7 +10,7 @@ import subscribeToBatchesService from '../actions/batches/subscribe'
 class Homepage extends PureComponent {
   componentWillMount() {
     const { fetchBatches, subscribeToBatchesService, subscribed } = this.props
-    fetchBatches()
+    this.props.fetchBatches()
     if (!subscribed) subscribeToBatchesService()
   }
 

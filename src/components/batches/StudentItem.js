@@ -14,7 +14,7 @@ class StudentItem extends PureComponent {
 
   render () {
     const { _id, photo, name } = this.props
-
+    debugger
     return(
       <article className="studentItem">
         <header>

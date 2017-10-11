@@ -17,7 +17,31 @@ class Batch extends PureComponent {
   }
 
   renderStudent(student, index){
-    return <StudentItem key={index} {...student}/>
+    const studentId = student._id
+    const photo = student.photo
+    const name = student.name
+
+    return(
+      <article key={index} className="studentItem">
+        <header>
+          <div
+            className="photo"
+            style={{ backgroundImage: `url(${photo})`}} />
+          <h1>
+            <a
+              href={`/students/${studentId}`}
+              className="title">
+              {name}
+            </a>
+          </h1>
+        </header>
+        <div
+          className="color"
+          style={{ backgroundColor: "#FF0000"}}>
+          <br />
+        </div>
+      </article>
+    )
   }
 
   render() {

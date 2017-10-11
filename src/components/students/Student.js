@@ -25,7 +25,7 @@ class Student extends PureComponent {
             <ul>
               <li>Name: { this.props.currentStudent.name }</li>
               <li>Batch: { this.props.currentStudent.batch.name }</li>
-              <li>Last evaluation: { this.props.currentStudent.lastEvaluation }</li>
+              <li>Last evaluation: { this.props.currentStudent.currentColor }</li>
             </ul>
           </div>
         </header>
