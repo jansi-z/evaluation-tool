@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import getCurrentStudent from '../../actions/students/get'
 import fetchStudents from '../../actions/students/fetch'
+import EvaluationForm from './EvaluationForm'
 import './Student.css'
 
 class Student extends PureComponent {
@@ -29,7 +30,7 @@ class Student extends PureComponent {
           </div>
         </header>
         <main>
-
+          <EvaluationForm />
         </main>
       </div>
     )
