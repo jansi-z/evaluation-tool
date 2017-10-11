@@ -1,5 +1,5 @@
 import { GET_STUDENT } from '../actions/students/get'
-import { EVALUATE } from '../actions/students/evaluate'
+import { STUDENT_EVALUATED } from '../actions/evaluations/create'
 
 export default (state = null, { type, payload } = {}) => {
   switch (type) {
@@ -7,7 +7,7 @@ export default (state = null, { type, payload } = {}) => {
     case GET_STUDENT :
       return payload
 
-    case EVALUATE :
+    case STUDENT_EVALUATED :
       return payload
 
     default :
