@@ -7,7 +7,9 @@ article.studentItem {
   flex-direction: column;
   margin: 1em .8em;
   background-color: #fff;
-  padding: 2.2em; }
+  padding: 2.2em;
+  min-width: 200px;
+  max-width: 200px; }
   article.studentItem main {
     padding: 10px 0;
     min-width: calc(100% - 1.6rem); }
@@ -16,12 +18,12 @@ article.studentItem {
     display: flex;
     flex: 1; }
   article.studentItem header .photo {
-    height: 280px;
+    height: 170px;
     background-size: cover;
     background-position: center center;
     overflow: hidden;
     margin-bottom: 54px; }
     article.studentItem header .photo img {
-      height: 200px; }
+      max-height: 200px; }
   article.studentItem header h1 {
     margin: 20px 0; }
