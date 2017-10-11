@@ -44,10 +44,14 @@ class API {
       password
     })
     .then((response) => {
+      console.log(response)
       return this.app.passport.verifyJWT(response.accessToken);
     })
     .then((payload) => {
       return this.app.service('users').get(payload.userId);
+    })
+    .catch((error) => {
+      console.error(error)
     })
   }
 

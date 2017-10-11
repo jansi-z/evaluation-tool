@@ -4,7 +4,7 @@ import auth from 'feathers-authentication-client'
 import io from 'socket.io-client/dist/socket.io'
 import socketio from 'feathers-socketio/client'
 
-const FEATHERS_TOKEN_KEY = 'recipes-api'
+const FEATHERS_TOKEN_KEY = 'evaluation-app'
 const host = 'http://localhost:3030'
 
 const socket = io(host, {
