@@ -5,6 +5,7 @@ import fetchStudents from '../actions/students/fetch'
 import getCurrentBatch from '../actions/batches/get'
 import Paper from 'material-ui/Paper'
 import subscribeToBatches from '../actions/batches/subscribe'
+import StudentItem from '../components/batches/StudentItem'
 
 class Batch extends PureComponent {
   componentWillMount(){
@@ -14,17 +15,20 @@ class Batch extends PureComponent {
     if(!subscribed) subscribeToBatches()
   }
 
-  renderStudent(){
-
+  renderStudent(student, index){
+    return <StudentItem key={index} {...student}/>
   }
 
   render() {
     if (this.props.currentBatch === null) return null
     return (
       <div className="batch">
-        <h1>{this.props.currentBatch.name}</h1>
-        <Paper className="studentList">
-        </Paper>
+        <header>
+          <h1>{ this.props.currentBatch.name }</h1>
+        </header>
+        <main>
+          { this.props.currentBatch.students.map(this.renderStudent.bind(this)) }
+        </main>
       </div>
     )
   }
