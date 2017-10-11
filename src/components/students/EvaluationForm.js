@@ -4,7 +4,7 @@ import TextField from 'material-ui/TextField'
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import DatePicker from 'material-ui/DatePicker';
-import evaluateStudent from '../../actions/students/evaluate'
+import evaluateStudent from '../../actions/evaluations/create'
 import './EvaluationForm.css'
 
 class EvaluationForm extends PureComponent {
@@ -20,10 +20,10 @@ class EvaluationForm extends PureComponent {
     const studentId = this.props.currentStudent._id
     const date = this.refs.date.refs.input.input.value
     const color = this.refs.color.props.value
-    const remarks = this.refs.remarks.getValue()
+    const remark = this.refs.remarks.getValue()
     const author = this.props.currentUser._id
-    const evaluationData = { date: date, color: color, remark: remarks, author: author }
-    
+    const evaluationData = { studentId: studentId, authorId: author, date: date, color: color, remark: remark  }
+
     this.props.evaluateStudent(studentId, evaluationData)
 
     document.getElementById("evaluationForm").reset()
