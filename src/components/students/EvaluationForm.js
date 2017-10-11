@@ -24,7 +24,7 @@ class EvaluationForm extends PureComponent {
     const author = this.props.currentUser._id
     const evaluationData = { studentId: studentId, authorId: author, date: date, color: color, remark: remark  }
 
-    this.props.evaluateStudent(studentId, evaluationData)
+    this.props.evaluateStudent(evaluationData)
 
     document.getElementById("evaluationForm").reset()
   }
