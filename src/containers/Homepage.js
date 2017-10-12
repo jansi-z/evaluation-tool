@@ -6,6 +6,7 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import fetchBatches from '../actions/batches/fetch'
 import subscribeToBatchesService from '../actions/batches/subscribe'
+import './Homepage.css'
 
 class Homepage extends PureComponent {
   componentWillMount() {
@@ -28,9 +29,10 @@ class Homepage extends PureComponent {
 
     return (
       <MenuItem
+        className="menuItem"
         key={index}
         onClick={this.goToBatch(batch._id).bind(this)}
-        primaryText={batch.number}
+        primaryText={`Batch #${batch.number}`}
         secondaryText={dates} />
     )
   }
@@ -42,12 +44,14 @@ class Homepage extends PureComponent {
 
     return (
       <div className="Homepage">
-        <h1 id="logo">Welcome to student evaluation assignment!</h1>
-        <Paper className="batchList">
-          <Menu>
-            { this.props.batches.map(this.renderBatch.bind(this))}
-          </Menu>
-        </Paper>
+        <h1 id="logo">Welcome, {currentUser.name}!</h1>
+        <main>
+          <Paper className="batchList">
+            <Menu className="batches">
+              { this.props.batches.map(this.renderBatch.bind(this))}
+            </Menu>
+          </Paper>
+        </main>
       </div>
     )
   }

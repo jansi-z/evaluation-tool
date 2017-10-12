@@ -28,7 +28,7 @@ class CreateStudentForm extends PureComponent {
 
     return (
       <div className="newBatch">
-        <h2>Create new Batch</h2>
+        <h2>Create new student</h2>
         <form id="createStudentForm" onSubmit={ this.submitStudent.bind(this) }>
           <TextField
             hintText="Student name"

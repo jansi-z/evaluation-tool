@@ -1,0 +1,9 @@
+main {
+  display: flex;
+  flex-direction: column; }
+  main .batchList {
+    max-width: 1000px;
+    min-width: 500px;
+    align-self: center; }
+  main .menuItem {
+    text-align: left; }

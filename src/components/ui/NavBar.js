@@ -8,7 +8,8 @@ import IconButton from 'material-ui/IconButton'
 import GameIcon from 'material-ui/svg-icons/hardware/videogame-asset'
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import MenuIcon from 'material-ui/svg-icons/navigation/menu'
+import HomeIcon from 'material-ui/svg-icons/action/home'
 
 const TITLE = 'Evaluation Tool'
 
@@ -57,7 +58,7 @@ class NavBar extends PureComponent {
 
     const UnLogged = () => (
       <IconMenu
-        iconButtonElement={ <IconButton><MoreVertIcon /></IconButton> }
+        iconButtonElement={ <IconButton><MenuIcon color="FFF" /></IconButton> }
         targetOrigin={{horizontal: 'right', vertical: 'top'}}
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
       >
@@ -70,7 +71,7 @@ class NavBar extends PureComponent {
 
     const Logged = () => (
       <IconMenu
-        iconButtonElement={ <IconButton><MoreVertIcon /></IconButton> }
+        iconButtonElement={ <IconButton><MenuIcon color="FFF" /></IconButton> }
         targetOrigin={{horizontal: 'right', vertical: 'top'}}
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
       >
@@ -85,7 +86,7 @@ class NavBar extends PureComponent {
     return (
       <AppBar
         title={(currentUser) ? `Signed in as ${currentUser.name}` : TITLE }
-        iconElementLeft={<IconButton onClick={this.goHome}><GameIcon /></IconButton>}
+        iconElementLeft={<IconButton onClick={this.goHome}><HomeIcon /></IconButton>}
         iconElementRight={signedIn ?
           <Logged /> : <UnLogged />
         }

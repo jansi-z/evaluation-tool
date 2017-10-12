@@ -68,7 +68,7 @@ class ManageStudents extends PureComponent {
                 <TableHeaderColumn>Batch</TableHeaderColumn>
                 <TableHeaderColumn>Last evaluation</TableHeaderColumn>
                 <TableHeaderColumn>Total evaluations</TableHeaderColumn>
-                <TableHeaderColumn>Total evaluations</TableHeaderColumn>
+                <TableHeaderColumn>Edit</TableHeaderColumn>
                 <TableHeaderColumn>Delete</TableHeaderColumn>
               </TableRow>
             </TableHeader>
