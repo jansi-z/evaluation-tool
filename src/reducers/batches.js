@@ -1,4 +1,5 @@
 import { FETCHED_BATCHES } from '../actions/batches/fetch'
+import { BATCH_ADDED } from '../actions/batches/create'
 import {
   BATCH_CREATED,
   BATCH_UPDATED,
@@ -12,8 +13,12 @@ export default (state = [], { type, payload } = {}) => {
       return [ ...payload ]
 
     case BATCH_CREATED :
-      const newGame = { ...payload }
-      return [newGame].concat(state)
+      const newBatch = { ...payload }
+      return [newBatch].concat(state)
+
+    case BATCH_ADDED :
+      const addedBatch = { ...payload }
+      return [addedBatch].concat(state)
 
     case BATCH_UPDATED :
       return state.map((batch) => {
