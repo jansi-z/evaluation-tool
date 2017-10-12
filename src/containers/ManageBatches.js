@@ -20,7 +20,6 @@ class ManageBatches extends PureComponent {
 
     fetchBatches()
     if (!subscribed) subscribeToBatchesService()
-    debugger
   }
 
   deleteBatch(click){

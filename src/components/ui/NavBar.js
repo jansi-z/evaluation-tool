@@ -48,6 +48,10 @@ class NavBar extends PureComponent {
     this.props.push('/manage/batches')
   }
 
+  manageStudents(){
+    this.props.push('/manage/students')
+  }
+
   render() {
     const { signedIn, currentUser } = this.props
 
@@ -72,6 +76,7 @@ class NavBar extends PureComponent {
       >
         <MenuItem primaryText="Sign out" onClick={this.signOut.bind(this)} />
         <MenuItem primaryText="Manage batches" onClick={this.manageBatches.bind(this)} />
+        <MenuItem primaryText="Manage students" onClick={this.manageStudents.bind(this)} />
       </IconMenu>
     );
 
