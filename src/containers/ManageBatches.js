@@ -30,13 +30,15 @@ class ManageBatches extends PureComponent {
 
   renderBatch(batch, index){
 
-    const { number, startDate, endDate } = batch
+    const { number, startDate, endDate, studentIds } = batch
+    const studentNumber = studentIds.length
 
     return(
       <TableRow key={index} id={index}>
         <TableRowColumn>{number}</TableRowColumn>
         <TableRowColumn>{startDate}</TableRowColumn>
         <TableRowColumn>{endDate}</TableRowColumn>
+        <TableRowColumn>{(studentNumber) ? studentNumber : 0 }</TableRowColumn>
         <TableRowColumn><button onClick={this.deleteBatch.bind(this)}>Delete</button></TableRowColumn>
       </TableRow>
     )
@@ -64,6 +66,7 @@ class ManageBatches extends PureComponent {
                 <TableHeaderColumn>Number</TableHeaderColumn>
                 <TableHeaderColumn>Start date</TableHeaderColumn>
                 <TableHeaderColumn>End date</TableHeaderColumn>
+                <TableHeaderColumn>Students</TableHeaderColumn>
                 <TableHeaderColumn>Delete</TableHeaderColumn>
               </TableRow>
             </TableHeader>
