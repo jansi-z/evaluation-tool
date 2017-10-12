@@ -10,8 +10,7 @@ import {
 } from 'material-ui/Table'
 import fetchStudents from '../actions/students/fetch'
 import fetchBatches from '../actions/batches/fetch'
-// import CreateBatchForm from '../components/batches/CreateBatchForm'
-// import deleteBatch from '../actions/batches/delete'
+import CreateStudentForm from '../components/students/CreateStudentForm'
 
 class ManageStudents extends PureComponent {
 
@@ -36,7 +35,7 @@ class ManageStudents extends PureComponent {
     return(
       <TableRow key={index} id={index}>
         <TableRowColumn>{name}</TableRowColumn>
-        <TableRowColumn>{batch.number}</TableRowColumn>
+        <TableRowColumn>{(batch) ? batch.number : "No batch"}</TableRowColumn>
         <TableRowColumn>{currentColor}</TableRowColumn>
         <TableRowColumn>{(evaluationNumber) ? evaluationNumber : 0 }</TableRowColumn>
         <TableRowColumn><button onClick={this.deleteStudent.bind(this)}>Delete</button></TableRowColumn>
@@ -49,6 +48,9 @@ class ManageStudents extends PureComponent {
     if (!students) return null
     return(
       <div className="studentManager">
+        <div className="studentForm">
+          <CreateStudentForm />
+        </div>
         <div className="studentContainer">
           <Table
             fixedHeader={true}

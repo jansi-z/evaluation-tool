@@ -1,9 +1,5 @@
 import { FETCHED_STUDENTS } from '../actions/students/fetch'
-// import {
-//   GAME_CREATED,
-//   GAME_UPDATED,
-//   GAME_REMOVED
-// } from '../actions/games/subscribe'
+import { STUDENT_ADDED } from '../actions/students/create'
 
 export default (state = [], { type, payload } = {}) => {
   switch (type) {
@@ -11,20 +7,9 @@ export default (state = [], { type, payload } = {}) => {
     case FETCHED_STUDENTS :
       return [ ...payload ]
 
-    // case GAME_CREATED :
-    //   const newGame = { ...payload }
-    //   return [newGame].concat(state)
-    //
-    // case GAME_UPDATED :
-    //   return state.map((game) => {
-    //     if (game._id === payload._id) {
-    //       return { ...payload }
-    //     }
-    //     return game
-    //   })
-    //
-    // case GAME_REMOVED :
-    //     return state.filter((game) => (game._id !== payload._id))
+    case STUDENT_ADDED :
+      const newStudent = { ...payload }
+      return [newStudent].concat(state)
 
     default :
       return state
