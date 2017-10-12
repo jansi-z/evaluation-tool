@@ -1,5 +1,6 @@
 import { FETCHED_BATCHES } from '../actions/batches/fetch'
 import { BATCH_ADDED } from '../actions/batches/create'
+import { BATCH_DELETED } from '../actions/batches/delete'
 import {
   BATCH_CREATED,
   BATCH_UPDATED,
@@ -30,6 +31,10 @@ export default (state = [], { type, payload } = {}) => {
 
     case BATCH_REMOVED :
         return state.filter((batch) => (batch._id !== payload._id))
+
+    case BATCH_DELETED :
+        return state.filter((batch) => (batch._id !== payload._id))
+
 
     default :
       return state

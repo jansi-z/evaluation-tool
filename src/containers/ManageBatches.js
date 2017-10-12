@@ -11,6 +11,7 @@ import {
 import fetchBatches from '../actions/batches/fetch'
 import CreateBatchForm from '../components/batches/CreateBatchForm'
 import subscribeToBatchesService from '../actions/batches/subscribe'
+import deleteBatch from '../actions/batches/delete'
 
 class ManageBatches extends PureComponent {
 
@@ -24,8 +25,8 @@ class ManageBatches extends PureComponent {
 
   deleteBatch(click){
     const batches = this.props.batches
-    const batch = batches[click.target.parentElement.parentElement.id]
-    debugger
+    const batchId = batches[click.target.parentElement.parentElement.id]
+    this.props.deleteBatch(batchId)
   }
 
   renderBatch(batch, index){
@@ -84,4 +85,4 @@ class ManageBatches extends PureComponent {
 
 const mapStateToProps = ({ currentUser, batches, subscriptions }) => ({ currentUser, batches, subscribed: subscriptions.includes('batches') })
 
-export default connect(mapStateToProps, { fetchBatches, subscribeToBatchesService })(ManageBatches)
+export default connect(mapStateToProps, { fetchBatches, subscribeToBatchesService, deleteBatch })(ManageBatches)
