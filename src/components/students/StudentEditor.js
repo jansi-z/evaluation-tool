@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import TextField from 'material-ui/TextField'
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import getStudent from '../../actions/students/get'
+import getCurrentStudent from '../../actions/students/get'
 import updateStudent from '../../actions/students/update'
 import './CreateStudentForm.css'
 
@@ -24,14 +24,14 @@ class StudentEditor extends PureComponent {
   }
 
   componentWillMount(){
-    debugger
-    
+    const studentId = this.props.match.params.studentId
+    this.props.getCurrentStudent(studentId)
   }
 
   render() {
 
     const { batches, currentStudent } = this.props
-
+    if (!currentStudent) return null
     return (
       <div className="newBatch">
         <h2>Edit {currentStudent.name}</h2>
@@ -44,13 +44,13 @@ class StudentEditor extends PureComponent {
           />
           <TextField
             hintText="Photo url"
-            floatingLabelText="Link:"
+            floatingLabelText="Photo link:"
             value={currentStudent.photo}
             ref="photo"
           />
           <TextField
             hintText="Batch number"
-            floatingLabelText="Number:"
+            floatingLabelText="Batch number:"
             value={currentStudent.batch.number}
             ref="batch"
           />
@@ -63,4 +63,4 @@ class StudentEditor extends PureComponent {
 
 const mapStateToProps = ({ batches, students, currentStudent }) => ({ batches, students, currentStudent })
 
-export default connect(mapStateToProps, { updateStudent })(StudentEditor)
+export default connect(mapStateToProps, { updateStudent, getCurrentStudent })(StudentEditor)

@@ -28,18 +28,9 @@ class ManageStudents extends PureComponent {
 
   }
 
-  editStudent(click){
-    const { students, push } = this.props
-    const studentId = students[click.target.parentElement.parentElement.id]
-    debugger
-    return () => {
-      push(`/students/${studentId}/edit`)
-    }
-  }
-
   renderStudent(student, index){
 
-    const { photo, name, currentColor, evaluationIds, batch } = student
+    const { photo, name, currentColor, evaluationIds, batch, _id } = student
     const evaluationNumber = evaluationIds.length
 
     return(
@@ -48,7 +39,7 @@ class ManageStudents extends PureComponent {
         <TableRowColumn>{(batch) ? batch.number : "No batch"}</TableRowColumn>
         <TableRowColumn>{currentColor}</TableRowColumn>
         <TableRowColumn>{(evaluationNumber) ? evaluationNumber : 0 }</TableRowColumn>
-        <TableRowColumn><button onClick={this.editStudent.bind(this)}>Edit</button></TableRowColumn>
+        <TableRowColumn><a href={`/students/${_id}/edit`}>Edit</a></TableRowColumn>
         <TableRowColumn><button onClick={this.deleteStudent.bind(this)}>Delete</button></TableRowColumn>
       </TableRow>
     )
