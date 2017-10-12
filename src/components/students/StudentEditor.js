@@ -20,7 +20,7 @@ class StudentEditor extends PureComponent {
     const batch = this.refs.batch.getValue()
     const batchId = (batches[(batch - 1)])._id
     const studentData = { name: name, photo: photo, batchId: batchId }
-    
+
     this.props.updateStudent(studentId, studentData)
 
     document.getElementById("updateStudentForm").reset()
@@ -56,7 +56,7 @@ class StudentEditor extends PureComponent {
           <TextField
             hintText="Batch number"
             floatingLabelText="Batch number:"
-            defaultValue={currentStudent.batch.number}
+            defaultValue={(currentStudent.batch) ? currentStudent.batch.number : "No batch"}
             ref="batch"
           />
           <input type="submit" value="Submit" />
