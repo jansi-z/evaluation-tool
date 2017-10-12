@@ -9,11 +9,17 @@ import {
   TableRowColumn,
 } from 'material-ui/Table'
 import fetchBatches from '../actions/batches/fetch'
+import CreateBatchForm from '../components/batches/CreateBatchForm'
+import subscribeToBatchesService from '../actions/batches/subscribe'
 
 class ManageBatches extends PureComponent {
 
   componentWillMount(){
-    this.props.fetchBatches()
+    const { fetchBatches, subscribed } = this.props
+
+    fetchBatches()
+    if (!subscribed) subscribeToBatchesService()
+    debugger
   }
 
   deleteBatch(click){
@@ -40,34 +46,39 @@ class ManageBatches extends PureComponent {
     const batches = this.props.batches
     if (!batches) return null
     return(
-      <div className="batchContainer">
-        <Table
-          fixedHeader={true}
-          fixedFooter={false}
-          selectable={false}
-          multiSelectable={false}>
-          <TableHeader
-            displaySelectAll={false}
-            adjustForCheckbox={false}
-            enableSelectAll={false}>
-            <TableRow>
-              <TableHeaderColumn>Name</TableHeaderColumn>
-              <TableHeaderColumn>Start date</TableHeaderColumn>
-              <TableHeaderColumn>End date</TableHeaderColumn>
-              <TableHeaderColumn>Delete</TableHeaderColumn>
-            </TableRow>
-          </TableHeader>
-          <TableBody
-            displayRowCheckbox={false}
-            showRowHover={false}>
-            { batches.map(this.renderBatch.bind(this))}
-          </TableBody>
-        </Table>
+      <div className="batchManager">
+        <div className="batchForm">
+          <CreateBatchForm />
+        </div>
+        <div className="batchContainer">
+          <Table
+            fixedHeader={true}
+            fixedFooter={false}
+            selectable={false}
+            multiSelectable={false}>
+            <TableHeader
+              displaySelectAll={false}
+              adjustForCheckbox={false}
+              enableSelectAll={false}>
+              <TableRow>
+                <TableHeaderColumn>Number</TableHeaderColumn>
+                <TableHeaderColumn>Start date</TableHeaderColumn>
+                <TableHeaderColumn>End date</TableHeaderColumn>
+                <TableHeaderColumn>Delete</TableHeaderColumn>
+              </TableRow>
+            </TableHeader>
+            <TableBody
+              displayRowCheckbox={false}
+              showRowHover={false}>
+              { batches.map(this.renderBatch.bind(this))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ batches }) => ({ batches })
+const mapStateToProps = ({ currentUser, batches, subscriptions }) => ({ currentUser, batches, subscribed: subscriptions.includes('batches') })
 
-export default connect(mapStateToProps, { fetchBatches })(ManageBatches)
+export default connect(mapStateToProps, { fetchBatches, subscribeToBatchesService })(ManageBatches)
