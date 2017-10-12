@@ -6,6 +6,7 @@ import getCurrentBatch from '../actions/batches/get'
 import Paper from 'material-ui/Paper'
 import subscribeToBatches from '../actions/batches/subscribe'
 import StudentItem from '../components/batches/StudentItem'
+import QuestionButton from '../components/batches/QuestionButton'
 import './Batch.css'
 
 class Batch extends PureComponent {
@@ -50,6 +51,7 @@ class Batch extends PureComponent {
       <div className="batch">
         <header>
           <h1>{ this.props.currentBatch.name }</h1>
+          <QuestionButton />
         </header>
         <main>
           { this.props.currentBatch.students.map(this.renderStudent.bind(this)) }
