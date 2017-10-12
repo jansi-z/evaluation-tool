@@ -11,6 +11,7 @@ import {
 import fetchStudents from '../actions/students/fetch'
 import fetchBatches from '../actions/batches/fetch'
 import CreateStudentForm from '../components/students/CreateStudentForm'
+import { push } from 'react-router-redux'
 
 class ManageStudents extends PureComponent {
 
@@ -24,7 +25,16 @@ class ManageStudents extends PureComponent {
   deleteStudent(click){
     const students = this.props.students
     const studentId = students[click.target.parentElement.parentElement.id]
+
+  }
+
+  editStudent(click){
+    const { students, push } = this.props
+    const studentId = students[click.target.parentElement.parentElement.id]
     debugger
+    return () => {
+      push(`/students/${studentId}/edit`)
+    }
   }
 
   renderStudent(student, index){
@@ -38,6 +48,7 @@ class ManageStudents extends PureComponent {
         <TableRowColumn>{(batch) ? batch.number : "No batch"}</TableRowColumn>
         <TableRowColumn>{currentColor}</TableRowColumn>
         <TableRowColumn>{(evaluationNumber) ? evaluationNumber : 0 }</TableRowColumn>
+        <TableRowColumn><button onClick={this.editStudent.bind(this)}>Edit</button></TableRowColumn>
         <TableRowColumn><button onClick={this.deleteStudent.bind(this)}>Delete</button></TableRowColumn>
       </TableRow>
     )
@@ -66,6 +77,7 @@ class ManageStudents extends PureComponent {
                 <TableHeaderColumn>Batch</TableHeaderColumn>
                 <TableHeaderColumn>Last evaluation</TableHeaderColumn>
                 <TableHeaderColumn>Total evaluations</TableHeaderColumn>
+                <TableHeaderColumn>Total evaluations</TableHeaderColumn>
                 <TableHeaderColumn>Delete</TableHeaderColumn>
               </TableRow>
             </TableHeader>
@@ -83,4 +95,4 @@ class ManageStudents extends PureComponent {
 
 const mapStateToProps = ({ currentUser, batches, students }) => ({ currentUser, batches, students })
 
-export default connect(mapStateToProps, { fetchBatches, fetchStudents })(ManageStudents)
+export default connect(mapStateToProps, { fetchBatches, fetchStudents, push })(ManageStudents)
