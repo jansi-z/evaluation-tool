@@ -57,7 +57,7 @@ class Batch extends PureComponent {
     return (
       <div className="batch">
         <header>
-          <h1>{ this.props.currentBatch.name }</h1>
+          <h1>{ this.props.currentBatch.number }</h1>
           <QuestionButton />
         </header>
         <main>

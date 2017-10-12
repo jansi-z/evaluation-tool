@@ -11,11 +11,11 @@ export default () => {
 
     api.authenticate()
       .then(() => {
-        
+
         backend.find({
           query: {
             $sort: {
-              startDate: 1,
+              number: 1,
             },
           }
         })

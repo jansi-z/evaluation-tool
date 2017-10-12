@@ -30,7 +30,7 @@ class Homepage extends PureComponent {
       <MenuItem
         key={index}
         onClick={this.goToBatch(batch._id).bind(this)}
-        primaryText={batch.name}
+        primaryText={batch.number}
         secondaryText={dates} />
     )
   }

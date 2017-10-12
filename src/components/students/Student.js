@@ -24,7 +24,7 @@ class Student extends PureComponent {
             <img src={ this.props.currentStudent.photo } />
             <ul>
               <li>Name: { this.props.currentStudent.name }</li>
-              <li>Batch: { this.props.currentStudent.batch.name }</li>
+              <li>Batch: { this.props.currentStudent.batch.number }</li>
               <li>Last evaluation: { this.props.currentStudent.currentColor }</li>
             </ul>
           </div>
