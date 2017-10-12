@@ -1,6 +1,7 @@
 import API from '../../api'
 
 export const STUDENT_UPDATED = 'STUDENT_UPDATED'
+export const UPDATE_STUDENT = 'UPDATE_STUDENT'
 
 const api = new API()
 
@@ -11,7 +12,7 @@ export default (studentId, studentData) => {
 
     api.authenticate()
       .then(() => {
-        backend.patch(studentId, studentData)
+        backend.patch(studentId, { type: UPDATE_STUDENT, payload: studentData })
           .then((result) => {
             console.log(result)
                 dispatch({

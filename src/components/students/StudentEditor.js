@@ -5,27 +5,32 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import getCurrentStudent from '../../actions/students/get'
 import updateStudent from '../../actions/students/update'
+import fetchBatches from '../../actions/batches/fetch'
 import './CreateStudentForm.css'
 
 class StudentEditor extends PureComponent {
 
   submitStudent(event){
     event.preventDefault()
+
+    const studentId = this.props.currentStudent._id
     const batches = this.props.batches
     const name = this.refs.name.getValue()
     const photo = this.refs.photo.getValue()
     const batch = this.refs.batch.getValue()
     const batchId = (batches[(batch - 1)])._id
     const studentData = { name: name, photo: photo, batchId: batchId }
-
-    this.props.updateStudent(studentData)
+    
+    this.props.updateStudent(studentId, studentData)
 
     document.getElementById("updateStudentForm").reset()
   }
 
   componentWillMount(){
-    const studentId = this.props.match.params.studentId
+    const studentId  = this.props.match.params.studentId
+    const { getCurrentStudent, fetchBatches, batches } = this.props
     this.props.getCurrentStudent(studentId)
+    fetchBatches()
   }
 
   render() {
@@ -39,19 +44,19 @@ class StudentEditor extends PureComponent {
           <TextField
             hintText="Student name"
             floatingLabelText="Name:"
-            value={currentStudent.name}
+            defaultValue={currentStudent.name}
             ref="name"
           />
           <TextField
             hintText="Photo url"
             floatingLabelText="Photo link:"
-            value={currentStudent.photo}
+            defaultValue={currentStudent.photo}
             ref="photo"
           />
           <TextField
             hintText="Batch number"
             floatingLabelText="Batch number:"
-            value={currentStudent.batch.number}
+            defaultValue={currentStudent.batch.number}
             ref="batch"
           />
           <input type="submit" value="Submit" />
@@ -63,4 +68,4 @@ class StudentEditor extends PureComponent {
 
 const mapStateToProps = ({ batches, students, currentStudent }) => ({ batches, students, currentStudent })
 
-export default connect(mapStateToProps, { updateStudent, getCurrentStudent })(StudentEditor)
+export default connect(mapStateToProps, { updateStudent, getCurrentStudent, fetchBatches })(StudentEditor)
