@@ -45,7 +45,7 @@ class NavBar extends PureComponent {
   }
 
   render() {
-    const { signedIn } = this.props
+    const { signedIn, currentUser } = this.props
 
     const UnLogged = () => (
       <IconMenu
@@ -74,7 +74,7 @@ class NavBar extends PureComponent {
 
     return (
       <AppBar
-        title={TITLE}
+        title={(currentUser) ? `Signed in as ${currentUser.name}` : TITLE }
         iconElementLeft={<IconButton onClick={this.goHome}><GameIcon /></IconButton>}
         iconElementRight={signedIn ?
           <Logged /> : <UnLogged />
@@ -85,7 +85,7 @@ class NavBar extends PureComponent {
 }
 
 const mapStateToProps = ({ currentUser }) => ({
-  signedIn: (!!currentUser && !!currentUser._id)
+  currentUser
 })
 
 export default connect(mapStateToProps, { push, signOut })(NavBar)
