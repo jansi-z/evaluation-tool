@@ -9,7 +9,7 @@ import subscribeToBatchesService from '../actions/batches/subscribe'
 
 class Homepage extends PureComponent {
   componentWillMount() {
-    const { fetchBatches, subscribeToBatchesService, subscribed } = this.props
+    const { fetchBatches, subscribeToBatchesService, subscribed, currentUser } = this.props
     this.props.fetchBatches()
     if (!subscribed) subscribeToBatchesService()
   }
@@ -36,6 +36,10 @@ class Homepage extends PureComponent {
   }
 
   render() {
+    const currentUser = this.props.currentUser
+
+    if (!currentUser) return (<h1>Please log in</h1>)
+
     return (
       <div className="Homepage">
         <h1 id="logo">Welcome to student evaluation assignment!</h1>

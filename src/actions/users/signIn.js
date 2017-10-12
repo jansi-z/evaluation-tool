@@ -7,12 +7,12 @@ const api = new API()
 
 export default (user) => {
 
-  console.log(user)
   return (dispatch) => {
 
     api.signIn(user)
       .then((result) => {
-        debugger
+        api.app.set('user', user)
+        history.replace('/')
         dispatch({
           type: USER_SIGNED_IN,
           payload: result
