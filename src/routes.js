@@ -5,6 +5,7 @@ import SignIn from './containers/SignIn'
 import SignUp from './containers/SignUp'
 import Batch from './containers/Batch'
 import Student from './components/students/Student'
+import ManageBatches from './containers/ManageBatches'
 
 export default class Routes extends Component {
   render() {
@@ -14,6 +15,7 @@ export default class Routes extends Component {
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />
         <Route path="/batches/:batchId" component={Batch} />
+        <Route path="/manage/batches" component={ManageBatches} />
         <Route exact path="/students/:studentId" component={Student} />
       </div>
     )

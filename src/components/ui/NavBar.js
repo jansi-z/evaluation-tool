@@ -44,6 +44,10 @@ class NavBar extends PureComponent {
     this.props.push('/')
   }
 
+  manageBatches(){
+    this.props.push('/manage/batches')
+  }
+
   render() {
     const { signedIn, currentUser } = this.props
 
@@ -67,6 +71,7 @@ class NavBar extends PureComponent {
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
       >
         <MenuItem primaryText="Sign out" onClick={this.signOut.bind(this)} />
+        <MenuItem primaryText="Manage batches" onClick={this.manageBatches.bind(this)} />
       </IconMenu>
     );
 
@@ -85,7 +90,7 @@ class NavBar extends PureComponent {
 }
 
 const mapStateToProps = ({ currentUser }) => ({
-  currentUser
+  signedIn: (!!currentUser && !!currentUser._id)
 })
 
 export default connect(mapStateToProps, { push, signOut })(NavBar)
