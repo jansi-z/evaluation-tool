@@ -23,8 +23,6 @@ class ManageEvaluations extends PureComponent {
   deleteEvaluation(click){
     const { evaluations } = this.props
     const evaluationId = (evaluations[click.target.parentElement.parentElement.id])._id
-
-    debugger
   }
 
   returnStudentName(students, studentId){
@@ -36,7 +34,7 @@ class ManageEvaluations extends PureComponent {
     const students = this.props.students
     const { color, remark, studentId, date, _id } = evaluation
     const student = this.returnStudentName(students, studentId)
-    debugger
+
     return(
       <TableRow key={index} id={index}>
         <TableRowColumn>{student}</TableRowColumn>
