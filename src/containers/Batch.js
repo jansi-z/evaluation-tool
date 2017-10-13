@@ -52,6 +52,7 @@ class Batch extends PureComponent {
   }
 
   render() {
+    debugger
     if (this.props.currentBatch === null) return null
     return (
       <div className="batch">
