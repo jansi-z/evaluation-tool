@@ -9,7 +9,7 @@ class EvaluationEditor extends PureComponent {
 
   componentWillMount(){
     const evaluationId  = this.props.match.params.evaluationId
-    const { getCurrentEvaluation, fetchBatches } = this.props
+    const { getCurrentEvaluation } = this.props
     getCurrentEvaluation(evaluationId)
   }
 
@@ -62,6 +62,6 @@ class EvaluationEditor extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ batches, evaluations, currentEvaluation }) => ({ batches, evaluations, currentEvaluation })
+const mapStateToProps = ({ currentEvaluation }) => ({ currentEvaluation })
 
-export default connect(mapStateToProps, { updateEvaluation, getCurrentEvaluation, fetchBatches })(EvaluationEditor)
+export default connect(mapStateToProps, { updateEvaluation, getCurrentEvaluation })(EvaluationEditor)

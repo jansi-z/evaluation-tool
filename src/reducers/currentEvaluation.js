@@ -1,5 +1,5 @@
 import { GET_EVALUATION } from '../actions/evaluations/get'
-// import { EVALUATION_UPDATED } from '../actions/evaluations/update'
+import { EVALUATION_UPDATED } from '../actions/evaluations/update'
 
 export default (state = null, { type, payload } = {}) => {
   switch (type) {
@@ -7,8 +7,8 @@ export default (state = null, { type, payload } = {}) => {
     case GET_EVALUATION :
       return payload
 
-    // case EVALUATION_UPDATED :
-    //   return payload
+    case EVALUATION_UPDATED :
+      return payload
 
     default :
       return state
