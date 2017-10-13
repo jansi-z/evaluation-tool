@@ -1,29 +1,21 @@
 import API from '../../api'
 
-export const FETCHED_EVALUATIONS = 'FETCHED_EVALUATIONS'
+export const GET_EVALUATION = 'GET_EVALUATION'
 
 const api = new API()
 
-export default () => {
+export default (evaluationId) => {
   return (dispatch) => {
 
     const backend = api.service('evaluations')
 
     api.authenticate()
       .then(() => {
-
-        backend.find({
-          query: {
-            $sort: {
-              studentId: 1,
-            },
-          }
-        })
+        backend.get(evaluationId)
           .then((result) => {
             console.log(result)
-            
             dispatch({
-              type: FETCHED_EVALUATIONS,
+              type: GET_EVALUATION,
               payload: result
             })
           })

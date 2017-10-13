@@ -5,6 +5,7 @@ import currentBatch from './currentBatch'
 import subscriptions from './subscriptions'
 import currentStudent from './currentStudent'
 import evaluations from './evaluations'
+import currentEvaluation from './currentEvaluation'
 
 export default {
   batches,
@@ -14,4 +15,5 @@ export default {
   subscriptions,
   currentStudent,
   evaluations,
+  currentEvaluation,
 }
