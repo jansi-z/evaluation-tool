@@ -16,7 +16,7 @@ class ManageEvaluations extends PureComponent {
 
   componentWillMount(){
     const { fetchStudents, fetchEvaluations } = this.props
-    // fetchStudents()
+    fetchStudents()
     fetchEvaluations()
   }
 
@@ -27,14 +27,19 @@ class ManageEvaluations extends PureComponent {
     debugger
   }
 
+  returnStudentName(students, studentId){
+    const selectedStudent = (students.filter((student) => { return (student._id).toString() === studentId.toString() }))[0]
+    if (selectedStudent) return selectedStudent.name
+  }
+
   renderEvaluation(evaluation, index){
     const students = this.props.students
     const { color, remark, studentId, date, _id } = evaluation
-    const student = students.filter((student) => { return student._id === studentId })
-
+    const student = this.returnStudentName(students, studentId)
+    debugger
     return(
       <TableRow key={index} id={index}>
-        <TableRowColumn>{student.name}</TableRowColumn>
+        <TableRowColumn>{student}</TableRowColumn>
         <TableRowColumn>{date}</TableRowColumn>
         <TableRowColumn>{color}</TableRowColumn>
         <TableRowColumn>{remark}</TableRowColumn>

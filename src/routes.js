@@ -24,7 +24,7 @@ export default class Routes extends Component {
         <Route path="/manage/evaluations" component={ManageEvaluations} />
         <Route exact path="/students/:studentId" component={Student} />
         <Route path ="/students/:studentId/edit" component={StudentEditor} />
-        <Route path ="/evaluations/:evaluationId/edit" componet={EvaluationEditor} />
+        <Route path ="/evaluations/:evaluationId/edit" component={EvaluationEditor} />
       </div>
     )
   }

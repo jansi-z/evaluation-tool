@@ -3,16 +3,17 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import fetchStudents from '../actions/students/fetch'
 import getCurrentBatch from '../actions/batches/get'
+import Paper from 'material-ui/Paper'
 import subscribeToBatches from '../actions/batches/subscribe'
+import StudentItem from '../components/batches/StudentItem'
 import QuestionButton from '../components/batches/QuestionButton'
 import './Batch.css'
 
 class Batch extends PureComponent {
   componentWillMount(){
-    const { getCurrentBatch, subscribed } = this.props
+    const { fetchStudents, getCurrentBatch, subscribed, batches } = this.props
     const batchId = this.props.match.params.batchId
-
-    getCurrentBatch(batchId)
+    this.props.getCurrentBatch(batchId)
     if(!subscribed) subscribeToBatches()
   }
 
@@ -52,7 +53,6 @@ class Batch extends PureComponent {
   }
 
   render() {
-    debugger
     if (this.props.currentBatch === null) return null
     return (
       <div className="batch">
