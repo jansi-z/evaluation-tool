@@ -5,7 +5,6 @@ import { push } from 'react-router-redux'
 import signOut from '../../actions/users/signOut'
 import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
-import GameIcon from 'material-ui/svg-icons/hardware/videogame-asset'
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu'

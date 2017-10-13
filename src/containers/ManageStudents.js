@@ -24,8 +24,8 @@ class ManageStudents extends PureComponent {
 
   deleteStudent(click){
     const students = this.props.students
-    const studentId = students[click.target.parentElement.parentElement.id]
-
+    const studentId = (students[click.target.parentElement.parentElement.id])._id
+    debugger
   }
 
   renderStudent(student, index){
