@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import TextField from 'material-ui/TextField'
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
 import createStudent from '../../actions/students/create'
 import './CreateStudentForm.css'
 
@@ -23,8 +21,6 @@ class CreateStudentForm extends PureComponent {
   }
 
   render() {
-
-    const batches = this.props.batches
 
     return (
       <div className="newBatch">

@@ -31,16 +31,7 @@ export default () => {
           })
       })
       .catch((error) => {
-        backend.find()
-          .then((result) => {
-            dispatch({
-              type: FETCHED_EVALUATIONS,
-              payload: result.data
-            })
-          })
-          .catch((error) => {
-            console.log(error)
-          })
+        console.log(error)
       })
   }
 }

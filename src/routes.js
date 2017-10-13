@@ -7,6 +7,7 @@ import Batch from './containers/Batch'
 import Student from './components/students/Student'
 import ManageBatches from './containers/ManageBatches'
 import ManageStudents from './containers/ManageStudents'
+import ManageEvaluations from './containers/ManageEvaluations'
 import StudentEditor from './components/students/StudentEditor'
 
 export default class Routes extends Component {
@@ -19,6 +20,7 @@ export default class Routes extends Component {
         <Route path="/batches/:batchId" component={Batch} />
         <Route path="/manage/batches" component={ManageBatches} />
         <Route path="/manage/students" component={ManageStudents} />
+        <Route path="/manage/evaluations" component={ManageEvaluations} />
         <Route exact path="/students/:studentId" component={Student} />
         <Route path ="/students/:studentId/edit" component={StudentEditor} />
       </div>

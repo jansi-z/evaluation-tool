@@ -10,8 +10,8 @@ import './Homepage.css'
 
 class Homepage extends PureComponent {
   componentWillMount() {
-    const { fetchBatches, subscribeToBatchesService, subscribed, currentUser } = this.props
-    this.props.fetchBatches()
+    const { fetchBatches, subscribeToBatchesService, subscribed } = this.props
+    fetchBatches()
     if (!subscribed) subscribeToBatchesService()
   }
 

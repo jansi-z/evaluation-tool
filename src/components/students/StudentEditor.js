@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import TextField from 'material-ui/TextField'
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
 import getCurrentStudent from '../../actions/students/get'
 import updateStudent from '../../actions/students/update'
 import fetchBatches from '../../actions/batches/fetch'
@@ -28,14 +26,14 @@ class StudentEditor extends PureComponent {
 
   componentWillMount(){
     const studentId  = this.props.match.params.studentId
-    const { getCurrentStudent, fetchBatches, batches } = this.props
-    this.props.getCurrentStudent(studentId)
+    const { getCurrentStudent, fetchBatches } = this.props
+    getCurrentStudent(studentId)
     fetchBatches()
   }
 
   render() {
 
-    const { batches, currentStudent } = this.props
+    const { currentStudent } = this.props
     if (!currentStudent) return null
     return (
       <div className="newBatch">

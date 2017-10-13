@@ -32,7 +32,7 @@ class ManageStudents extends PureComponent {
 
   renderStudent(student, index){
 
-    const { photo, name, currentColor, evaluationIds, batch, _id } = student
+    const { name, currentColor, evaluationIds, batch, _id } = student
     const evaluationNumber = evaluationIds.length
 
     return(

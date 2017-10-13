@@ -11,8 +11,8 @@ export default (state = [], { type, payload } = {}) => {
       const newEvaluation = { ...payload }
       return [newEvaluation].concat(state)
 
-    case EVALUATION_DELETED :
-        return state.filter((evaluation) => (evaluation._id !== payload._id))
+    // case EVALUATION_DELETED :
+    //     return state.filter((evaluation) => (evaluation._id !== payload._id))
 
     default :
       return state

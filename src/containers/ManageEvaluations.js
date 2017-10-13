@@ -16,7 +16,7 @@ class ManageEvaluations extends PureComponent {
 
   componentWillMount(){
     const { fetchStudents, fetchEvaluations } = this.props
-    fetchStudents()
+    // fetchStudents()
     fetchEvaluations()
   }
 
