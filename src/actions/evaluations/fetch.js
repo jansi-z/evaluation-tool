@@ -21,9 +21,10 @@ export default () => {
         })
           .then((result) => {
             console.log(result)
+            debugger
             dispatch({
               type: FETCHED_EVALUATIONS,
-              payload: result.data
+              payload: result
             })
           })
           .catch((error) => {
