@@ -26,13 +26,14 @@ class Homepage extends PureComponent {
     const startDate = batch.startDate.toString()
     const endDate = batch.endDate.toString()
     const dates = startDate.substr(0, 10)+" to "+endDate.substr(0, 10)
+    const numberOfStudents = batch.students.length
 
     return (
       <MenuItem
         className="menuItem"
         key={index}
         onClick={this.goToBatch(batch._id).bind(this)}
-        primaryText={`Batch #${batch.number}`}
+        primaryText={`Batch #${batch.number} - ${numberOfStudents} students`}
         secondaryText={dates} />
     )
   }
