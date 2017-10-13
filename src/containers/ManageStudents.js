@@ -12,6 +12,7 @@ import fetchStudents from '../actions/students/fetch'
 import fetchBatches from '../actions/batches/fetch'
 import CreateStudentForm from '../components/students/CreateStudentForm'
 import { push } from 'react-router-redux'
+import deleteStudentAction from '../actions/students/delete'
 
 class ManageStudents extends PureComponent {
 
@@ -23,9 +24,10 @@ class ManageStudents extends PureComponent {
   }
 
   deleteStudent(click){
-    const students = this.props.students
+    const { students, deleteStudentAction } = this.props
     const studentId = (students[click.target.parentElement.parentElement.id])._id
-    
+
+    deleteStudentAction(studentId)
   }
 
   renderStudent(student, index){
@@ -86,4 +88,4 @@ class ManageStudents extends PureComponent {
 
 const mapStateToProps = ({ currentUser, batches, students }) => ({ currentUser, batches, students })
 
-export default connect(mapStateToProps, { fetchBatches, fetchStudents, push })(ManageStudents)
+export default connect(mapStateToProps, { fetchBatches, fetchStudents, push, deleteStudentAction })(ManageStudents)
