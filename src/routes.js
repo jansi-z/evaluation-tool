@@ -9,6 +9,7 @@ import ManageBatches from './containers/ManageBatches'
 import ManageStudents from './containers/ManageStudents'
 import ManageEvaluations from './containers/ManageEvaluations'
 import StudentEditor from './components/students/StudentEditor'
+import EvaluationEditor from './components/evaluations/EvaluationEditor'
 
 export default class Routes extends Component {
   render() {
@@ -23,6 +24,7 @@ export default class Routes extends Component {
         <Route path="/manage/evaluations" component={ManageEvaluations} />
         <Route exact path="/students/:studentId" component={Student} />
         <Route path ="/students/:studentId/edit" component={StudentEditor} />
+        <Route path ="/evaluations/:evaluationId/edit" componet={EvaluationEditor} />
       </div>
     )
   }
