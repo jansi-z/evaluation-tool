@@ -26,7 +26,7 @@ class Homepage extends PureComponent {
     const startDate = batch.startDate.toString()
     const endDate = batch.endDate.toString()
     const dates = startDate.substr(0, 10)+" to "+endDate.substr(0, 10)
-    const numberOfStudents = batch.students.length
+    const numberOfStudents = (batch.students) ? batch.students.length : "0"
 
     return (
       <MenuItem
